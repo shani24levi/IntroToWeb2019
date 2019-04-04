@@ -1,0 +1,48 @@
+<!DOCTYPE heml>
+<html>
+	<head>
+		<mata charset= "UTF-8"></mata>
+		<link rel="stylesheet" href="includes/style2.css">
+		<title> shani levi</title>
+	</head>
+	<body id="layout1">
+		<header>
+			<nav>
+                <ul>
+                    <li><a href="#">mix</a></li>
+                    <li><a href="#">stars</a></li>
+                    <li><a href="#">dymation</a></li>
+                </ul>
+            </nav>
+		</header>
+	
+		<main>
+			<section class="text">
+                <h1> M I K</h1>
+                <h3>mix layout</h3>
+			</section>
+
+			<section>
+                <section class="boxes">
+                    <div class="box1"></div>
+                    <div class="box2"></div>
+                    <div class="box3"></div>
+                </section>
+			</section>
+
+
+		</main>
+
+		<footer>
+			<section>
+				<button> </button>
+				<a href= "#" > fo7</a> 
+			</section>
+
+			<section>
+					<a href= "#" > fo7</a> 
+			</section>
+		</footer>
+
+	</body>
+</html>
