@@ -1,0 +1,106 @@
+1.
+SELECT count(*) as album_count FROM albums where albumRecordingBegining > second_date and albumRecordingEnd < second_date;
+
+2.
+SELECT count(*) as num_of_songs FROM albums
+inner join musician_albums	
+on musician_albums.albumId = albums.albumId		  
+inner join musicians								  
+on musicians.musicianId = musician_albums.musicianId "
+inner join album_songs								  
+on album_songs.albumId = albums.albumId			  
+where musicianName = musician_name and albumRecordingBegining > first_date and albumRecordingEnd < second_date;
+
+3.
+Select COUNT(*) as count
+FROM albums
+INNER JOIN musician_albums
+ON albums.albumId = musician_albums.albumId
+INNER JOIN musicians
+ON musicians.musicianId = musician_albums.musicianId
+WHERE(Select musicianId from musicians WHERE
+musicians.musicianName = musician_name) = musicians.musicianId and albumRecordingEnd > first_date' and albumRecordingEnd < second_date;
+
+4.
+select instruments.instrumentName from musical_numbers																		
+inner join musical_numbers_instruments on musical_numbers.musicalNumberId = musical_numbers_instruments.musicalNumberId
+inner join instruments on instruments.instrumentId = musical_numbers_instruments.instruemntId								
+group by instruments.instrumentId																							
+limit 1;
+
+5.
+select instrumentName from instruments														
+inner join albums_instruments on instruments.instrumentId = albums_instruments.instrumentId
+"where albums_instruments.albumId = (select albums.albumId from albums where albums.albumName = album_name);
+
+6.
+Select producerName, max(reps) from
+(Select producerName, count(albumId) as reps  
+FROM producers                                  
+INNER JOIN producer_albums                         
+ON producer_albums.producerId = producers.producerId
+group by producer_albums.producerId ) as temp_table;
+
+7.
+select instruments.instrumentMaker from instruments
+where instruments.instrumentName = (select instruments.instrumentName from musical_numbers
+inner join musical_numbers_instruments on musical_numbers.musicalNumberId = musical_numbers_instruments.musicalNumberId
+inner join instruments on instruments.instrumentId = musical_numbers_instruments.instruemntId
+group by instruments.instrumentId
+limit 1);
+
+8.
+Select count(*) as count1 from musicians
+
+9.
+select musicianName, max(participants) from                                        
+(Select musicians.musicianName,albumId,count(*) as participants from musicians      
+INNER JOIN musician_albums                                                         
+ON musicians.musicianId = musician_albums.musicianId                               
+group by albumId) as tablu;
+
+10.
+select songGenre, max(rep) as rep from(Select*, count(*) as rep from songs	  
+group by songGenre) as table;
+
+11.
+SELECT*, count(*) as songs FROM songs					
+inner join recorders																
+on songs.recorderId = recorders.recorderId											
+inner join album_songs																
+on album_songs.songId = songs.songId												
+inner join albums																	 
+on albums.albumId = album_songs.albumId									
+where albumRecordingBegining > first_date and albumRecordingEnd < second_date	
+group by recorderName																
+order by songs DESC												
+limit 1
+
+12.
+SELECT * FROM albums order by albumRecordingEnd ASC;
+
+13.
+Select*, count(*) as rep from album_songs
+inner join songs						
+on album_songs.songId = songs.songId	
+group by songName						
+having rep > 1;
+
+14.
+SELECT *, count(*) as number_of_tracks FROM recorders
+inner join songs									
+on recorders.recorderId = songs.recorderId			
+inner join album_songs								
+on album_songs.songId = songs.songId				
+inner join albums									
+on albums.albumId = album_songs.albumId				
+group by albums.albumId								
+having albums.albumNumberOfTracks = number_of_tracks;
+
+15.
+select musicians.musicianName from musicians								
+inner join musician_songs on musicians.musicianId = musician_songs.musicianId
+inner join songs on songs.songId = musician_songs.songId					
+group by musicians.musicianName												   
+order by count(songs.songGenre) desc										
+limit 1;																	

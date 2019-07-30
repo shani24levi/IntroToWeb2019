@@ -1,0 +1,2 @@
+﻿  standalone_example.cpp
+c:\users\shani\desktop\shaniproject\mysql_final_project\mysql_final_project\mysqlfuck\bookstore\standalone_example.cpp(5): fatal error C1083: Cannot open include file: 'sqlDb.h': No such file or directory
